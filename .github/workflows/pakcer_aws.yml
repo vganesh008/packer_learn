@@ -27,6 +27,8 @@ jobs:
       container: hashicorp/packer:light-1.15.1
       steps:
         - name: ${{ github.event.inputs.Environment }}
+          run: |
+              echo "${{ github.event.inputs.Environment }}"
     packer_version:
       needs: setup
       runs-on: ubuntu:latest
