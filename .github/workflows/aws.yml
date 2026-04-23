@@ -41,7 +41,7 @@ jobs:
             - name: Testing oracle OS version
               run: |
                   date
-            - name: Testing1
+            - name: ${{ needs.setup.outputs.container }}
               run: |
                   uptime
     os-version:
