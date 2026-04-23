@@ -19,7 +19,7 @@ on:
             - amazon-core
             - RHEL-core
 
-run-name: 
+run-name: ${{ github.event.inputs.Environment }}_${{ github.event.inputs.server_role}}
 
 jobs:
     setup:
