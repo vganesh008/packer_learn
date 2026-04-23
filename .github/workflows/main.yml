@@ -1,0 +1,13 @@
+name: Learn
+on:
+    workflow_dispatch:
+        inputs:
+            env:
+              description: 
+              required: true
+              default: false
+              type: choice
+              options:
+                  - dev
+                  - prod
+                  
