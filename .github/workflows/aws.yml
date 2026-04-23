@@ -29,6 +29,7 @@ jobs:
         steps:
             - name: test
               run: |
-                  echo "${{ github.event_name }}"
+                  packer --version
+                  packer --help
                   
                   
