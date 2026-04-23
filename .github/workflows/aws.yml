@@ -51,7 +51,7 @@ jobs:
         container:
             image: hashicorp/packer:light-1.15.1
         steps:
-            - name: aws-${{ github.event.inputs.role }}'
+            - name: aws-${{ github.event.inputs.role }}
               run: |
                   date
     
