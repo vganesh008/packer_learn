@@ -11,7 +11,7 @@ on:
                   - dev
                   - prod
             role:
-                description: please provide an server role
+                description: please provide an server role #Created for testing
                 default: false
                 type: choice
                 options:
