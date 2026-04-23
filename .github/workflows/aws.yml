@@ -32,7 +32,7 @@ jobs:
                   packer --version
                   packer --help
     oracle-validation:
-        runs-on: aws-${{ github.event.inputs.env }}
+        runs-on: ubuntu-latest
         if: contains('RHEL8_oracle,RHEL9_oracle', github.event.inputs.role )
         container: 
             image: hashicorp/packer:light-1.15.1
@@ -45,7 +45,7 @@ jobs:
                   uptime
     os-version:
         needs: setup
-        runs-on: aws-${{ github.event.inputs.role }}
+        runs-on: ubuntu-latest
         if: contains('RHEL8,RHEL9', github.event.inputs.role)
         container: 
             image: hashicorp/packer:light-1.15.1
