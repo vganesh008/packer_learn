@@ -1,0 +1,60 @@
+name: Learn
+on:
+    workflow_dispatch:
+        inputs:
+            env:
+              description: 
+              required: true
+              default: false
+              type: choice
+              options:
+                  - dev
+                  - prod
+            role:
+                description: please provide an server role #Created for testing
+                default: false
+                type: choice
+                options:
+                    - RHEL8
+                    - RHEL9
+                    - RHEL8_oracle
+                    - RHEL9_oracle
+run-name: ${{ github.event.inputs.env }}_${{ github.event.inputs.role }}
+
+jobs:
+    setup:
+        runs-on: ubuntu-latest
+        container:
+            image: hashicorp/packer:light-1.15.1
+        steps:
+            - name: test
+              run: |
+                  packer --version
+                  packer --help
+    oracle-validation:
+        needs: setup
+        runs-on: ubuntu-latest
+        if: contains('RHEL8_oracle,RHEL9_oracle', github.event.inputs.role )
+        container: 
+            image: hashicorp/packer:light-1.15.1
+        steps:
+            - name: Testing oracle OS version
+              run: |
+                  date
+            - name: ${{ needs.setup.outputs.container }}
+              run: |
+                  uptime
+    os-version:
+        needs: setup
+        runs-on: ubuntu-latest
+        if: contains('RHEL8,RHEL9', github.event.inputs.role)
+        container: 
+            image: hashicorp/packer:light-1.15.1
+        steps:
+            - name: aws-${{ github.event.inputs.role }}
+              run: |
+                  date
+    
+            
+                  
+                  
