@@ -32,6 +32,7 @@ jobs:
                   packer --version
                   packer --help
     oracle-validation:
+        needs: setup
         runs-on: ubuntu-latest
         if: contains('RHEL8_oracle,RHEL9_oracle', github.event.inputs.role )
         container: 
