@@ -24,7 +24,8 @@ run-name: ${{ github.event.inputs.env }}_${{ github.event.inputs.role }}
 jobs:
     setup:
         runs-on: ubuntu-latest
-        container: ubuntu-latest
+        container:
+            image: hashicorp/packer:light-1.15.1
         steps:
             - name: test
               run: |
