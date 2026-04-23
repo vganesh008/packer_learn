@@ -32,10 +32,10 @@ jobs:
                   packer --version
                   packer --help
     oracle-validation:
-        needs: setup
         runs-on: aws-${{ github.event.inputs.env }}
         if: contains('RHEL8_oracle,RHEL9_oracle', github.event.inputs.role )
-        container: ${{ needs.setup.outputs.container }}
+        container: 
+            image: hashicorp/packer:light-1.15.1
         steps:
             - name: Testing oracle OS version
               run: |
@@ -47,7 +47,8 @@ jobs:
         needs: setup
         runs-on: aws-${{ github.event.inputs.role }}
         if: contains('RHEL8,RHEL9', github.event.inputs.role)
-        container: ${{ needs.setup.outputs.container }}
+        container: 
+            image: hashicorp/packer:light-1.15.1
         steps:
             - name: aws-${{ github.event.inputs.role }}
               run: |
