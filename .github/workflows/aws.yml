@@ -10,4 +10,24 @@ on:
               options:
                   - dev
                   - prod
+            role:
+                description: please provide an server role
+                default: false
+                type: choice
+                options:
+                    - RHEL8
+                    - RHEL9
+                    - RHEL8_oracle
+                    - RHEL9_oracle
+run-name: ${{ github.event.inputs.env }}_${{ github.event.inputs.role }}
+
+jobs:
+    setup:
+        runs-on: ubuntu-latest
+        container: ubuntu-latest
+        steps:
+            - name: test
+              run: |
+                  echo "${{ github.event_name }}"
+                  
                   
